@@ -21,4 +21,3 @@ services:
       - ELASTIC_PASSWORD=toor
       - bootstrap.memory_lock=true
       - xpack.security.enabled=false
-      - xpack.license.self_generated.type=${LICENSE}
