@@ -11,9 +11,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: toor
 
   elasctic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
-    labels:
-      co.elastic.logs/module: elasticsearch
+    image: elasticsearch:8.10.2
     ports:
       - "9200:9200"
     environment:
