@@ -6,7 +6,7 @@ from mongoengine.fields import DateTimeField, IntField, StringField
 from loguru import logger
 
 
-MONGO_DB_HOST = "172.20.0.2"
+MONGO_DB_HOST = "172.21.0.2"
 MONGO_DB_PORT = 27017
 MONGO_DB_DATABASE = "pets"
 MONGO_DB_USERNAME = "root"
