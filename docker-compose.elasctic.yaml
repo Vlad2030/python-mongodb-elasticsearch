@@ -2,13 +2,13 @@ version: '3.7'
 
 services:
   elasctic:
-    image: elasticsearch:8.10.2
-    ports:
-      - "9200:9200"
-    environment:
-      - node.name=elasctic
-      - cluster.name=test
-      - discovery.type=single-node
-      - ELASTIC_PASSWORD=toor
-      - bootstrap.memory_lock=true
-      - xpack.security.enabled=false
+    version: '3'
+    services:
+      elasticsearch:
+        image: elasticsearch:8.8.0
+        ports:
+          - 9200:9200
+          - 9300:9300
+        environment:
+          - discovery.type=single-node
+          - xpack.security.enabled=false

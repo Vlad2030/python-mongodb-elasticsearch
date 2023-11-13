@@ -2,22 +2,25 @@ version: '3.7'
 
 services:
   mongo:
-    image: mongo:6
+    image: mongo
     restart: always
     ports:
       - "27017:27017"
     environment:
+      MONGO_INITDB_DATABASE: pets
+      MONGODB_USER: user
+      MONGODB_PASS: password
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: toor
 
   elasctic:
-    image: elasticsearch:8.10.2
-    ports:
-      - "9200:9200"
-    environment:
-      - node.name=elasctic
-      - cluster.name=test
-      - discovery.type=single-node
-      - ELASTIC_PASSWORD=toor
-      - bootstrap.memory_lock=true
-      - xpack.security.enabled=false
+    version: '3'
+    services:
+      elasticsearch:
+        image: elasticsearch:8.8.0
+        ports:
+          - 9200:9200
+          - 9300:9300
+        environment:
+          - discovery.type=single-node
+          - xpack.security.enabled=false
