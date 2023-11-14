@@ -6,13 +6,13 @@ from mongoengine import connect
 from mongoengine.document import Document
 from mongoengine.fields import DateTimeField, IntField, StringField
 
-MONGO_DB_HOST = "172.21.0.2"
+MONGO_DB_HOST = "176.57.213.53"
 MONGO_DB_PORT = 27017
 MONGO_DB_DATABASE = "pets"
 MONGO_DB_USERNAME = "root"
 MONGO_DB_PASSWORD = "toor"
 
-PETS_AMOUNT = 50
+PETS_AMOUNT = 500
 
 
 class Pets(Document):
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         username=MONGO_DB_USERNAME,
         password=MONGO_DB_PASSWORD,
     )
-
+    print(connection.__dir__())
     logger.success("MongoDB connected!")
 
     logger.info("Creating {amount} pets in MongoDB", amount=PETS_AMOUNT)

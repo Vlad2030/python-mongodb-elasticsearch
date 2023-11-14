@@ -7,13 +7,13 @@ from elasticsearch import Elasticsearch, helpers
 from pymongo import MongoClient
 
 
-MONGO_DB_HOST = "172.21.0.2"
+MONGO_DB_HOST = "176.57.213.53"
 MONGO_DB_PORT = 27017
 MONGO_DB_DATABASE = "pets"
 MONGO_DB_USERNAME = "root"
 MONGO_DB_PASSWORD = "toor"
 
-ELASTICSEARCH_DB_HOST = "192.168.1.65"
+ELASTICSEARCH_DB_HOST = "localhost"
 ELASTICSEARCH_DB_PORT = 9200
 MELASTICSEARCH_DB_DATABASE = "pets"
 ELASTICSEARCH_DB_USERNAME = "root"
@@ -42,11 +42,12 @@ def migrate():
     for i in range(num_docs):
         doc = res[i]
         mongo_id = doc['_id']
-        doc = json.dumps(doc, default = defaultconverter)
         doc.pop('_id', None)
         actions.append({
             "_index": es_index,
             "_id": mongo_id,
-            "_source": json.dumps(doc)
+            "_source": json.dumps(doc, default = defaultconverter)
         })
     helpers.bulk(es, actions)
+
+migrate()
